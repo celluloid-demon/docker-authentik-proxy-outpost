@@ -1,9 +1,9 @@
 services:
-  authentik-proxy:
+  authentik-proxy-outpost:
     image: ghcr.io/goauthentik/proxy
     # Optionally specify the container's network, which must be able to reach the core authentik server.
-    # networks:
-    #   - foo
+    networks:
+      - nginx-proxy-manager
     ports:
       - 9000:9000
       - 9443:9443
@@ -15,6 +15,10 @@ services:
       # AUTHENTIK_HOST_BROWSER: https://external-domain.tld
     secrets:
       - authentik_token
+
+networks:
+  nginx-proxy-manager:
+    external: true
 
 secrets:
   authentik_token:
