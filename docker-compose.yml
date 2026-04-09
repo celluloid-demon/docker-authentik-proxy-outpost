@@ -1,6 +1,7 @@
 services:
   authentik-proxy-outpost:
-    image: ghcr.io/goauthentik/proxy
+    # image: ghcr.io/goauthentik/proxy
+    image: ${AUTHENTIK_IMAGE:-ghcr.io/goauthentik/proxy}:${AUTHENTIK_TAG:-2026.2.1}
     # Optionally specify the container's network, which must be able to reach the core authentik server.
     networks:
       - nginx-proxy-manager
