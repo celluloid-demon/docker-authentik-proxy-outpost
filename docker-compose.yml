@@ -1,5 +1,8 @@
 services:
-  authentik-proxy-outpost:
+  # Note: Satellite stack main service (authentik-proxy-outpost:app-****)
+  # should avoid conflicts with services in same network as mother stack
+  # (nginx-proxy-manager:app).
+  app-cf42:
     # image: ghcr.io/goauthentik/proxy
     # WARNING: IMAGE VERSIONS MUST MATCH FOR SERVER, WORKER, PROXY OUTPOSTS, ETC...
     image: ${AUTHENTIK_IMAGE:-ghcr.io/goauthentik/proxy}:${AUTHENTIK_TAG:-2026.2.1}
